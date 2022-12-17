@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Master Financer</title>
+	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover"/>
+	<meta charset="utf-8">
+	<meta http-equiv=" X-UA-Compatible" content=" IE=edge">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="color-scheme" content="light dark">
+	<meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src *;  media-src *; img-src 'self' data:">
+
+	<script type="text/javascript" src="./static/assets/js/axios.min.js"></script>
+	<script type="text/javascript" src="./static/assets/js/jquery.js"></script>
+	<script type="text/javascript" src="./static/assets/js/underscore-umd.js"></script>
+	<script type="text/javascript" src="./static/assets/js/backbone.js"></script>
+	<script type="text/javascript" src="./static/assets/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="./static/assets/js/Notifier.min.js"></script>
+	<link rel="stylesheet" href="./static/assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="./static/css/style.css" />
+</head>
+<body>
+	<div class='app' class="container-fluid">
+		<div class="row">
+			<div class="card">
+				<div class="card-header p-3 text-center">
+					<a href="./index.html" class="btn border-0"><h1 class="fs-1">💖 Master Financer</h1></a>
+				</div>
+				<div class="card-body p-4">
+					<h5 class="card-title text-center">Iniciar Sesión</h5>
+					<div class="p-4">
+						<p class="card-text text-center">Desarrollo app cliente para consumo del servicio Rest Desarrollado en JAVA, para el curso de POO.</p>
+					</div>
+					<div class="card-body" style="background:#efefef">	
+						<form id='form_login' autocomplete="off" role='form' method="post" action="#">
+							<div class="form-row">
+								<div class="form-group mb-2">
+									<label class="form-control-label" for="username">Usuario <i class="text-danger">*</i></label>
+									<input class="form-control" id="username" name="username" placeholder="nombre usuario"/>	
+									<label id="username-error" class="error" for="username"></label>
+								</div>
+								<div class="form-group mb-2">
+									<label class="form-control-label" for="password">Clave <i class="text-danger">*</i></label>
+									<input class="form-control" id="clave" name="password" placeholder="" type="password"/>	
+									<label id="password-error" class="error" for="password"></label>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="card-footer">
+						<button id="autenticar" class="btn btn-success btn-md" type="button" data-role="button">Autenticar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="modalGenerico" class="modal fade" aria-hidden="true" aria-labelledby="modalGenerico" tabindex="-1">
+		<div class="modal-dialog modal-fullscreen">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="p-3 text-center">
+						<h1 class="fs-1">💖 Master Financer</h1>
+						<br/>
+						<h2 class="fs-4 text-center" id="modalTitle"></h2>
+					</div>
+				</div>
+				<div class="modal-body" id="showContentModal">...</div>
+				<div class="modal-footer" id="showFooterModal">
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<nav class="navbar fixed-bottom navbar-black bg-white p-3">
+		<div class="container-fluid">
+			<a class="btn btn-outline-primary rounded-0" href="./registro.html" data-role="button">Registro</a>
+			<a class="btn btn-outline-primary rounded-0" href="./dash.html" data-role="button">Dash</a>
+		</div>
+	</nav>
+
+	<script type="text/javascript" src="./static/js/login.js"></script>
+</body>
+</html>

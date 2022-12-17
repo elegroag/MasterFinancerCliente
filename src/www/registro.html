@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Master Financer</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+		<meta charset="utf-8">
+		<meta http-equiv=" X-UA-Compatible" content=" IE=edge">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="color-scheme" content="light">
+		<meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src *;  media-src *; img-src 'self' data:">
+		
+		<script type="text/javascript" src="./static/assets/js/axios.min.js"></script>
+		<script type="text/javascript" src="./static/assets/js/jquery.js"></script>
+		<script type="text/javascript" src="./static/assets/js/underscore-umd.js"></script>
+		<script type="text/javascript" src="./static/assets/js/backbone.js"></script>
+		<script type="text/javascript" src="./static/assets/js/bootstrap.bundle.min.js"></script>
+		<script type="text/javascript" src="./static/assets/js/Notifier.min.js"></script>
+		<link rel="stylesheet" href="./static/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./static/css/style.css" />
+	</head>
+	<body>
+		<div class='app' class="container-fluid">
+			<div class="row">
+				<div class="card">
+					<div class="card-header p-3 text-center">
+						<a href="./index.html" class="btn border-0"><h1 class="fs-1">💖 Master Financer</h1></a>
+					</div>
+					<div class="card-body p-4">
+						<h5 class="card-title text-center">Registro</h5>
+						<div class="p-4">
+							<p class="card-text text-center">Ingresa los datos requeridos para crear la cuenta de usuario.</p>
+						</div>
+						<div class="card-body" style="background:#efefef">		
+							<form id='form_registro' autocomplete="off" role='form' method="post" action="#">
+								<div class="form-row">
+									<div class="form-group mb-2"> 
+										<label class='form-control-label'>Tipo documento <i class="text-danger">*</i></label>
+										<select class="form-control" id='tipo_documento' name='tipo_documento' placeholder='seleccione aquí..'>
+											<option value="">NINGUNO</option>    
+										</select>
+										<label id="tipo_documento-error" class="error" for="tipo_documento"></label>
+									</div>
+									<div class="form-group mb-2">
+										<label class="form-control-label" for="documento">Identificación <i class="text-danger">*</i></label>
+										<input class="form-control" id="documento" name="documento" placeholder="documento" type="numeric"/>	
+										<label id="documento-error" class="error" for="documento"></label>
+									</div>
+									<div class="form-group mb-2">
+										<label class="form-control-label" for="email">Email <i class="text-danger">*</i></label>
+										<input class="form-control" id="email" name="email" placeholder="..." type="email" />	
+										<label id="email-error" class="error" for="email"></label>
+									</div>
+									<div class="form-group mb-2">
+										<label class="form-control-label" for="usuario">Usuario <i class="text-danger">*</i></label>
+										<input class="form-control" id="usuario" name="usuario" placeholder="nombre usuario"/>	
+										<label id="usuario-error" class="error" for="usuario"></label>
+									</div>
+									<div class="form-group mb-2">
+										<label class="form-control-label" for="clave">Clave <i class="text-danger">*</i></label>
+										<input class="form-control" id="clave" name="clave" placeholder="" type="password"/>	
+										<label id="clave-error" class="error" for="clave"></label>
+									</div>
+									<div class="form-group mb-2">
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" value="" id="terminos_condiciones">
+											<label class="form-check-label" for="terminos_condiciones">
+												Acepta terminos y condiciones
+											</label>
+										</div>
+									</div>							
+								</div>
+							</form>
+						</div>
+						<div class="card-footer">
+							<button id="confimaRegistro" class="btn btn-success btn-md" type="button">Confirmar registro</button>
+							<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Offcanvas</button>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+		<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
+			<div class="offcanvas-body small">
+				...
+			</div>
+		</div>
+
+		<div id="modalGenerico" class="modal fade" aria-hidden="true" aria-labelledby="modalGenerico" tabindex="-1">
+			<div class="modal-dialog modal-fullscreen">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<h1 class="modal-title fs-5" id="modalTitle"></h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				  </div>
+				  <div class="modal-body" id="showContentModal">...
+				  </div>
+				  <div class="modal-footer" id="showFooterModal">
+					<button class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Salir</button>
+				  </div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar fixed-bottom navbar-black bg-white p-2">
+			<div class="container-fluid">
+				<a class="btn btn-outline-primary rounded-0" href="./login.html" data-role="button">Login</a>
+				<a class="btn btn-outline-primary rounded-0" href="./dash.html" data-role="button">Dash</a>
+			</div>
+		</nav>
+		<script type="text/javascript" src="./static/js/registro.js"></script>
+	</body>
+</html>
+

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Master Financer</title>
+	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover"/>
+	<meta charset="utf-8">
+	<meta http-equiv=" X-UA-Compatible" content=" IE=edge">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="color-scheme" content="light">
+	<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src * 'unsafe-inline'; script-src *;  media-src *; connect-src *; img-src 'self' data:; object-src *; ">
+	<script type="text/javascript" src="./static/assets/js/axios.min.js"></script>
+	<script type="text/javascript" src="./static/assets/js/jquery.js"></script>
+	<script type="text/javascript" src="./static/assets/js/underscore-umd.js"></script>
+	<script type="text/javascript" src="./static/assets/js/backbone.js"></script>
+	<script type="text/javascript" src="./static/assets/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="./static/assets/js/Notifier.min.js"></script>
+	<link rel="stylesheet" href="./static/assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="./static/css/style.css" />
+</head>
+<body>
+	<div class='app' class="container-fluid">
+		<div class="row">
+			<div class="card">
+				<div class="card-header p-3 text-center">
+					<a href="./index.html" class="btn border-0"><h1 class="fs-1">💖 Master Financer</h1></a>
+				</div>
+				<div class="card-body p-4 ">
+					<h5 class="card-title text-center">SALDO ACTUAL</h5>
+					<div class="p-4 text-center">
+						<p class="card-text text-center">Bienvenido Señor(@) Usuario</p>
+						<img src="./static/img/avatar1.jpg"  class="img-responsive"/>
+						<p class="text-center" id="dataUserSesion"></p>
+					</div>
+					<div class="card-body text-center" style="background:#efefef">	
+						<h5 class="card-title">Saldo Disponible</h5>
+						<p class="card-text f1" id="showSaldoDisponible"></p>
+						<p class="card-text">Tambien puedes explorar las diferentes acciones y transacciones realizadas por la siguiente opción</p>
+						<a href="#" class="btn btn-outline-primary rounded-4">Transacciones realizadas</a>
+					</div>
+				</div>
+
+				<div class="accordion" id="accordionExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+						<button class="accordion-button text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+							<b>Compras</b>
+						</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<div class="d-grid gap-2 text-center">
+									<button type="button" id="nuevaCompra" class="btn btn-outline-primary rounded-4">Nueva Compra</button>
+									<button type="button" id="listaCompras" class="btn btn-outline-primary rounded-4">Lista Compras</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingTwo">
+						<button class="accordion-button collapsed text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							<b>Gastos</b>
+						</button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<div class="d-grid gap-2 text-center">
+									<button type="button" id="nuevoGasto" class="btn btn-outline-primary rounded-4">Nueva Gasto</button>
+									<button type="button" id="listaGastos" class="btn btn-outline-primary rounded-4">Lista Gastos</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingThree">
+						<button class="accordion-button collapsed text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							<b>Ingresos</b>
+						</button>
+						</h2>
+						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<div class="d-grid gap-2 text-center">
+									<a href="#" class="btn btn-outline-primary rounded-4">Nuevo Ingreso</a>
+									<a href="#" class="btn btn-outline-primary rounded-4">Lista Ingresos</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav class="navbar fixed-bottom navbar-light bg-light">
+		<div class="container-fluid">
+			<a class="btn btn-outline-primary rounded-0" href="./index.html" data-role="button">Salir</a>
+			<a class="btn btn-outline-primary rounded-0" href="./index.html" data-role="button">Config</a>
+		</div>
+	</nav>
+
+	<div id="modalGenerico" class="modal fade" aria-hidden="true" aria-labelledby="modalGenerico" tabindex="-1">
+		<div class="modal-dialog modal-fullscreen">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="p-2 text-center">
+						<h1 class="fs-1">💖 Master Financer</h1>
+					</div>
+				</div>
+				<div class="modal-body" id="showContentModal">...</div>
+				<div class="modal-footer" id="showFooterModal">
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--Formulario de compras-->
+	<div id="modalFormCompras" class="modal fade" aria-hidden="true" aria-labelledby="modalFormCompras" tabindex="-1">
+		<div class="modal-dialog modal-fullscreen">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="p-2 text-center">
+						<h1 class="fs-1">💖 Master Financer</h1>
+					</div>
+				</div>
+				<div class="modal-body" id="showContentFormCompras">
+					<div>
+						<form id='form_registro' autocomplete="off" role='form' method="post" action="#">
+							<div class="form-row">
+								<div class="form-group mb-2"> 
+									<label class='form-control-label'>Proveedor <i class="text-danger">*</i></label>
+									<select class="form-control" id='persona' name='persona' placeholder='seleccione aquí..'>
+										<option value="">NINGUNO</option>    
+									</select>
+									<label id="persona-error" class="error" for="persona"></label>
+								</div>
+								<div class="form-group mb-2">
+									<label class="form-control-label" for="username">Usuario <i class="text-danger">*</i></label>
+									<input class="form-control" id="username" name="username" placeholder="username" type="text" disabled />	
+									<label id="username-error" class="error" for="username"></label>
+								</div>
+								<div class="form-group mb-2">
+									<label class="form-control-label" for="valorCompra">Valor Compra <i class="text-danger">*</i></label>
+									<input class="form-control" id="valorCompra" name="valorCompra" placeholder="0" type="text" />	
+									<label id="valorCompra-error" class="error" for="valorCompra"></label>
+								</div>
+								<div class="form-group mb-2">
+									<label class="form-control-label" for="saldoPendiente">Saldo <i class="text-danger">*</i></label>
+									<input class="form-control" id="saldoPendiente" name="saldoPendiente" placeholder="0" type="text"/>	
+									<label id="saldoPendiente-error" class="error" for="saldoPendiente"></label>
+								</div>	
+								<div class="form-group mb-2">
+									<label class="form-control-label" for="tipoPago">Tipo Pago <i class="text-danger">*</i></label>
+									<input class="form-control" id="tipoPago" name="tipoPago" placeholder="Tipo pago "/>	
+									<label id="tipoPago-error" class="error" for="tipoPago"></label>
+								</div>
+								<div class="form-group mb-2">
+									<label class="form-control-label" for="fechaInicial">Fecha inicial <i class="text-danger">*</i></label>
+									<input class="form-control" id="fechaInicial" name="fechaInicial" placeholder="" type="date"/>	
+									<label id="fechaInicial-error" class="error" for="fechaInicial"></label>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer" id="showFooterFormCompras">
+					<button id="confimaRegistro" class="btn btn-success btn-md" type="button">Confirmar registro</button>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--Formulario de gastos-->
+	<div id="modalFormGastos" class="modal fade" aria-hidden="true" aria-labelledby="modalFormGastos" tabindex="-1">
+		<div class="modal-dialog modal-fullscreen">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="p-2 text-center">
+						<h1 class="fs-1">💖 Master Financer</h1>
+					</div>
+				</div>
+				<div class="modal-body" id="showContentFormGastos">
+					<div>
+						<form id='form_registro' autocomplete="off" role='form' method="post" action="#">
+							<div class="form-row">
+								<div class="form-group mb-2"> 
+									<label class='form-control-label'>Proveedor <i class="text-danger">*</i></label>
+									<select class="form-control" id='persona' name='persona' placeholder='seleccione aquí..'>
+										<option value="">NINGUNO</option>    
+									</select>
+									<label id="persona-error" class="error" for="persona"></label>
+								</div>
+								<div class="form-group mb-2">
+									<label class="form-control-label" for="username">Usuario <i class="text-danger">*</i></label>
+									<input class="form-control" id="username" name="username" placeholder="username" type="text" disabled />	
+									<label id="username-error" class="error" for="username"></label>
+								</div>
+								<div class="form-group mb-2">
+									<label class="form-control-label" for="valorCompra">Valor Compra <i class="text-danger">*</i></label>
+									<input class="form-control" id="valorCompra" name="valorCompra" placeholder="0" type="text" />	
+									<label id="valorCompra-error" class="error" for="valorCompra"></label>
+								</div>
+								<div class="form-group mb-2">
+									<label class="form-control-label" for="saldoPendiente">Saldo <i class="text-danger">*</i></label>
+									<input class="form-control" id="saldoPendiente" name="saldoPendiente" placeholder="0" type="text"/>	
+									<label id="saldoPendiente-error" class="error" for="saldoPendiente"></label>
+								</div>	
+								<div class="form-group mb-2">
+									<label class="form-control-label" for="tipoPago">Tipo Pago <i class="text-danger">*</i></label>
+									<input class="form-control" id="tipoPago" name="tipoPago" placeholder="Tipo pago "/>	
+									<label id="tipoPago-error" class="error" for="tipoPago"></label>
+								</div>
+								<div class="form-group mb-2">
+									<label class="form-control-label" for="fechaInicial">Fecha inicial <i class="text-danger">*</i></label>
+									<input class="form-control" id="fechaInicial" name="fechaInicial" placeholder="" type="date"/>	
+									<label id="fechaInicial-error" class="error" for="fechaInicial"></label>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer" id="showFooterFormGastos">
+					<button id="confimaRegistro" class="btn btn-success btn-md" type="button">Confirmar registro</button>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="./static/js/dash.js"></script>
+</body>
+</html>
