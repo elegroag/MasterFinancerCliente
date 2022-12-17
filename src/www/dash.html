@@ -124,47 +124,48 @@
 					</div>
 				</div>
 				<div class="modal-body" id="showContentFormCompras">
-					<div>
-						<form id='form_registro' autocomplete="off" role='form' method="post" action="#">
-							<div class="form-row">
-								<div class="form-group mb-2"> 
-									<label class='form-control-label'>Proveedor <i class="text-danger">*</i></label>
-									<select class="form-control" id='persona' name='persona' placeholder='seleccione aquí..'>
-										<option value="">NINGUNO</option>    
-									</select>
-									<label id="persona-error" class="error" for="persona"></label>
-								</div>
-								<div class="form-group mb-2">
-									<label class="form-control-label" for="username">Usuario <i class="text-danger">*</i></label>
-									<input class="form-control" id="username" name="username" placeholder="username" type="text" disabled />	
-									<label id="username-error" class="error" for="username"></label>
-								</div>
-								<div class="form-group mb-2">
-									<label class="form-control-label" for="valorCompra">Valor Compra <i class="text-danger">*</i></label>
-									<input class="form-control" id="valorCompra" name="valorCompra" placeholder="0" type="text" />	
-									<label id="valorCompra-error" class="error" for="valorCompra"></label>
-								</div>
-								<div class="form-group mb-2">
-									<label class="form-control-label" for="saldoPendiente">Saldo <i class="text-danger">*</i></label>
-									<input class="form-control" id="saldoPendiente" name="saldoPendiente" placeholder="0" type="text"/>	
-									<label id="saldoPendiente-error" class="error" for="saldoPendiente"></label>
-								</div>	
-								<div class="form-group mb-2">
-									<label class="form-control-label" for="tipoPago">Tipo Pago <i class="text-danger">*</i></label>
-									<input class="form-control" id="tipoPago" name="tipoPago" placeholder="Tipo pago "/>	
-									<label id="tipoPago-error" class="error" for="tipoPago"></label>
-								</div>
-								<div class="form-group mb-2">
-									<label class="form-control-label" for="fechaInicial">Fecha inicial <i class="text-danger">*</i></label>
-									<input class="form-control" id="fechaInicial" name="fechaInicial" placeholder="" type="date"/>	
-									<label id="fechaInicial-error" class="error" for="fechaInicial"></label>
-								</div>
-							</div>
-						</form>
+					<div class="p-2">
+						<h4 class="text-center text-info">Registrar nueva compra</h4>
 					</div>
+					<form id='form_registro' autocomplete="off" role='form' method="post" action="#">
+						<div class="form-row">
+							<div class="form-group mb-2"> 
+								<label class='form-control-label'>Proveedor <i class="text-danger">*</i></label>
+								<select class="form-control" id='persona' name='persona' placeholder='seleccione aquí..'>
+									<option value="">NINGUNO</option>    
+								</select>
+								<label id="persona-error" class="error" for="persona"></label>
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-control-label" for="username">Usuario <i class="text-danger">*</i></label>
+								<input class="form-control" id="username" name="username" placeholder="username" type="text" disabled />	
+								<label id="username-error" class="error" for="username"></label>
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-control-label" for="valorCompra">Valor Compra <i class="text-danger">*</i></label>
+								<input class="form-control" id="valorCompra" name="valorCompra" placeholder="0" type="text" />	
+								<label id="valorCompra-error" class="error" for="valorCompra"></label>
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-control-label" for="saldoPendiente">Saldo <i class="text-danger">*</i></label>
+								<input class="form-control" id="saldoPendiente" name="saldoPendiente" placeholder="0" type="text"/>	
+								<label id="saldoPendiente-error" class="error" for="saldoPendiente"></label>
+							</div>	
+							<div class="form-group mb-2">
+								<label class="form-control-label" for="tipoPago">Tipo Pago <i class="text-danger">*</i></label>
+								<input class="form-control" id="tipoPago" name="tipoPago" placeholder="Tipo pago "/>	
+								<label id="tipoPago-error" class="error" for="tipoPago"></label>
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-control-label" for="fechaInicial">Fecha inicial <i class="text-danger">*</i></label>
+								<input class="form-control" id="fechaInicial" name="fechaInicial" placeholder="" type="date"/>	
+								<label id="fechaInicial-error" class="error" for="fechaInicial"></label>
+							</div>
+						</div>
+					</form>
 				</div>
 				<div class="modal-footer" id="showFooterFormCompras">
-					<button id="confimaRegistro" class="btn btn-success btn-md" type="button">Confirmar registro</button>
+					<button id="confimaCompra" class="btn btn-success btn-md" type="button">Confirmar registro</button>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 			</div>
@@ -181,47 +182,48 @@
 					</div>
 				</div>
 				<div class="modal-body" id="showContentFormGastos">
-					<div>
-						<form id='form_registro' autocomplete="off" role='form' method="post" action="#">
-							<div class="form-row">
-								<div class="form-group mb-2"> 
-									<label class='form-control-label'>Proveedor <i class="text-danger">*</i></label>
-									<select class="form-control" id='persona' name='persona' placeholder='seleccione aquí..'>
-										<option value="">NINGUNO</option>    
-									</select>
-									<label id="persona-error" class="error" for="persona"></label>
-								</div>
-								<div class="form-group mb-2">
-									<label class="form-control-label" for="username">Usuario <i class="text-danger">*</i></label>
-									<input class="form-control" id="username" name="username" placeholder="username" type="text" disabled />	
-									<label id="username-error" class="error" for="username"></label>
-								</div>
-								<div class="form-group mb-2">
-									<label class="form-control-label" for="valorCompra">Valor Compra <i class="text-danger">*</i></label>
-									<input class="form-control" id="valorCompra" name="valorCompra" placeholder="0" type="text" />	
-									<label id="valorCompra-error" class="error" for="valorCompra"></label>
-								</div>
-								<div class="form-group mb-2">
-									<label class="form-control-label" for="saldoPendiente">Saldo <i class="text-danger">*</i></label>
-									<input class="form-control" id="saldoPendiente" name="saldoPendiente" placeholder="0" type="text"/>	
-									<label id="saldoPendiente-error" class="error" for="saldoPendiente"></label>
-								</div>	
-								<div class="form-group mb-2">
-									<label class="form-control-label" for="tipoPago">Tipo Pago <i class="text-danger">*</i></label>
-									<input class="form-control" id="tipoPago" name="tipoPago" placeholder="Tipo pago "/>	
-									<label id="tipoPago-error" class="error" for="tipoPago"></label>
-								</div>
-								<div class="form-group mb-2">
-									<label class="form-control-label" for="fechaInicial">Fecha inicial <i class="text-danger">*</i></label>
-									<input class="form-control" id="fechaInicial" name="fechaInicial" placeholder="" type="date"/>	
-									<label id="fechaInicial-error" class="error" for="fechaInicial"></label>
-								</div>
-							</div>
-						</form>
+					<div class="p-2">
+						<h4 class="text-center text-info">Registrar nueva compra</h4>
 					</div>
+					<form id='form_registro' autocomplete="off" role='form' method="post" action="#">
+						<div class="form-row">
+							<div class="form-group mb-2"> 
+								<label class='form-control-label'>Proveedor <i class="text-danger">*</i></label>
+								<select class="form-control" id='persona' name='persona' placeholder='seleccione aquí..'>
+									<option value="">NINGUNO</option>    
+								</select>
+								<label id="persona-error" class="error" for="persona"></label>
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-control-label" for="username">Usuario <i class="text-danger">*</i></label>
+								<input class="form-control" id="username" name="username" placeholder="username" type="text" disabled />	
+								<label id="username-error" class="error" for="username"></label>
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-control-label" for="valorCompra">Valor Compra <i class="text-danger">*</i></label>
+								<input class="form-control" id="valorCompra" name="valorCompra" placeholder="0" type="text" />	
+								<label id="valorCompra-error" class="error" for="valorCompra"></label>
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-control-label" for="saldoPendiente">Saldo <i class="text-danger">*</i></label>
+								<input class="form-control" id="saldoPendiente" name="saldoPendiente" placeholder="0" type="text"/>	
+								<label id="saldoPendiente-error" class="error" for="saldoPendiente"></label>
+							</div>	
+							<div class="form-group mb-2">
+								<label class="form-control-label" for="tipoPago">Tipo Pago <i class="text-danger">*</i></label>
+								<input class="form-control" id="tipoPago" name="tipoPago" placeholder="Tipo pago "/>	
+								<label id="tipoPago-error" class="error" for="tipoPago"></label>
+							</div>
+							<div class="form-group mb-2">
+								<label class="form-control-label" for="fechaInicial">Fecha inicial <i class="text-danger">*</i></label>
+								<input class="form-control" id="fechaInicial" name="fechaInicial" placeholder="" type="date"/>	
+								<label id="fechaInicial-error" class="error" for="fechaInicial"></label>
+							</div>
+						</div>
+					</form>
 				</div>
 				<div class="modal-footer" id="showFooterFormGastos">
-					<button id="confimaRegistro" class="btn btn-success btn-md" type="button">Confirmar registro</button>
+					<button id="confimaGasto" class="btn btn-success btn-md" type="button">Confirmar registro</button>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 			</div>

@@ -20,6 +20,88 @@ Models.Usuario = Backbone.Model.extend({
     }
 })
 
+Models.Compra = Backbone.Model.extend({
+    initialize: () => {
+        console.log("inicializa el modelo de compra")
+    },
+    urlRoot: 'http://localhost:8090/master-financer/api/compras/registrarCompraFull',
+    defaults: {
+        fechaInicial: '',
+        fechaFinal:'',
+        estadoCredito:'',
+        tipoPago:'',
+        persona:'',
+        saldoPendiente: 0,
+        valorCompra:0,
+        usuario:0
+    },
+    validate: (attrs, options) => {
+        let errors = []
+        if (attrs.fechaInicial == '') {
+            errors.push({"key":"fechaInicial","value":"el fecha inicial es valor requerido"})
+        }
+        if (attrs.estadoCredito == 0) {
+            errors.push({"key":"estadoCredito", "value":"el estado credito es valor requerido"})
+        }
+        if (attrs.tipoPago == '') {
+            errors.push({"key":"tipoPago","value":"el tipo pago es valor requerido"})
+        }
+        if (attrs.persona == 0) {
+            errors.push({"key":"persona", "value":"el persona es valor requerido"})
+        }
+        if (attrs.saldoPendiente == '') {
+            errors.push({"key":"saldoPendiente", "value":"la saldo pendiente es valor requerido"})
+        }
+        return (_.size(errors) > 0)? errors : void 0;
+    }
+})
+
+Models.Gasto = Backbone.Model.extend({
+    initialize: () => {
+        console.log("inicializa el modelo de compra")
+    },
+    urlRoot: 'http://localhost:8090/master-financer/api/gastos/createGastoFull',
+    defaults: {
+        "medioPago":"",
+        "gastoCategoria": 0,
+        "fecha": "",
+        "hora": "",
+        "usuario": 0,
+        "valor": 0,
+        "estado": "",
+        "tipoTransaccion": "",
+        "transaccion": ""
+    },
+    validate: (attrs, options) => {
+        let errors = []
+        if (attrs.medioPago == '') {
+            errors.push({"key":"medioPago","value":"el medioPago es valor requerido"})
+        }
+        if (attrs.gastoCategoria == 0) {
+            errors.push({"key":"gastoCategoria", "value":"el gasto Categoria es valor requerido"})
+        }
+        if (attrs.fecha == '') {
+            errors.push({"key":"fecha","value":"el fecha es valor requerido"})
+        }
+        if (attrs.hora == 0) {
+            errors.push({"key":"hora", "value":"el hora es valor requerido"})
+        }
+        if (attrs.usuario == 0) {
+            errors.push({"key":"usuario", "value":"la usuario es valor requerido"})
+        }
+        if (attrs.valor == 0) {
+            errors.push({"key":"valor", "value":"la valor es valor requerido"})
+        }
+        if (attrs.estado == '') {
+            errors.push({"key":"estado", "value":"la estado es valor requerido"})
+        }
+        if (attrs.tipoTransaccion == 0) {
+            errors.push({"key":"tipoTransaccion", "value":"la tipo transaccion es valor requerido"})
+        }
+        return (_.size(errors) > 0)? errors : void 0;
+    }
+})
+
 const Dash = () => {
 
     var $scope = {};
@@ -91,6 +173,10 @@ const Dash = () => {
 
     let preparaListaGastos = function(gastos){
         let html = '<ul class="list-group list-group-flush">';
+        if(_.size(gastos) == 0){
+            $('#showContentModal').html("<p>No hay registros de gastos en el momento.</p>");    
+            return false;
+        }
         _.each(gastos, function(gasto){
             // html+=`<li class="list-group-item">Fecha inicial: ${gasto.fechaInicial}<br/>`;
             html+='</li>';
@@ -137,7 +223,15 @@ const Dash = () => {
 	}
 
     let postEvent = function(){
-        
+        $('#confimaCompra').click(function(event){
+            event.preventDefault();
+
+        });
+
+        $('#confimaGasto').click(function(event){
+            event.preventDefault();
+
+        });
 	}
 
     let buscarDatosUsuario = function(){
