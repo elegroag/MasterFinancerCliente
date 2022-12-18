@@ -6,7 +6,6 @@ Models.Auth = Backbone.Model.extend({
     initialize: () => {
         console.log("inicializa el modelo de registro")
     },
-    urlRoot: 'http://localhost:8090/master-financer/api/auth/registration',
     defaults: {
         tipo_documento: 0,
         documento: 0,
@@ -73,18 +72,23 @@ const Registro = () => {
                     $('.error').fadeOut();
                     $('.error').text('');
                 }, 3000);
+                notifier.notify("warning", "Todos los campos son requeridos");
             } else {
-                auth.save({}, {
-                    success: function(response){
-                        console.log(response);
+
+                axios.post('http://localhost:8090/master-financer/api/auth/registration', auth.toJSON())
+                .then(function (response) {
+                    if(response.status == 200){
                         buscarUsuario(auth.get('usuario'), _data)
+                        notifier.notify("success", "El registro se ha completado con éxito")
                         setTimeout(function(){
                             window.location.href= "./dash.html";
-                        }, 2000);
-                    },
-                    error: function(err){
-                        console.log(err.responseText);
+                        }, 1500);
+                    } else {
+                        notifier.notify("warning", "Respuesta de error en la solicitud realizada");
                     }
+                })
+                .catch(function (err) {
+                    notifier.notify("error", err.response.data.message);
                 });
             }
             return false;
